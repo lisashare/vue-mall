@@ -10,6 +10,16 @@ npm install
 npm run serve
 ```
 
+### Compiles and minifies for development
+```
+npm run build:dev
+```
+
+### Compiles and minifies for test
+```
+npm run build:stage
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
@@ -32,6 +42,7 @@ npm install -g @vue/cli
 vue create vue-mall
 
 选择配置步骤详见[博客](https://www.cnblogs.com/lisaShare/p/16119149.html)
+> Vant 使用了 Less 对样式进行预处理，所以我们下载预处理器的时候也选择 Less
 
 创建完成后，可以通过命令打开图形化界面
 vue ui
@@ -40,7 +51,7 @@ vue ui
 
 [vant](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/home) 安装后配置
 
-自动按需引入组件
+自动按需引入组件 (推荐)
 
 babel-plugin-import 是一款 babel 插件，它会在编译过程中将 import 的写法自动转换为按需引入的方式。
 ```js
@@ -77,3 +88,9 @@ git remote add origin git@github.com:lisashare/vue-mall.git
 git branch -M main
 git push -u origin main
 ```
+
+[小进度条插件 nprogress](https://www.npmjs.com/package/nprogress)
+
+js-cookie
+
+配置路由及utils工具
