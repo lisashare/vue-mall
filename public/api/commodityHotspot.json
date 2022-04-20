@@ -1,0 +1,162 @@
+{
+  "code": 200, 
+  "message": "成功", 
+  "data": {
+      "records": [
+          {
+              "name": "华风少女", 
+              "categoryUuid": "a0d8c5870311ed889ada2874b5ba8785", 
+              "categoryName": "华风少女COMPACT", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "虎虎生福", 
+              "categoryUuid": "cfa9cbfcc1fe2d32f339cbe573456458", 
+              "categoryName": "虎虎生福", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "苏小妹", 
+              "categoryUuid": "33730097fb8a15a1d6288016bd39ed8b", 
+              "categoryName": "苏小妹", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "CBA", 
+              "categoryUuid": "1cd3f36f741163056f450fe505bfdacf", 
+              "categoryName": "CBA", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "仙剑奇侠传", 
+              "categoryUuid": "f1c6fef1fba38dec9749a5b2059942e3", 
+              "categoryName": "仙剑奇侠传", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "胖脸吉祥", 
+              "categoryUuid": "5dd2e3a1d7da35558dcf957cd9f64f3a", 
+              "categoryName": "胖脸吉祥", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "STIM", 
+              "categoryUuid": "a746be51feeffd2948cbd599213218b9", 
+              "categoryName": "STIM", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "疯狂食客R", 
+              "categoryUuid": "9d801d7e10e1000a5ad340d093b6fdcb", 
+              "categoryName": "疯狂食客R", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "疯狂食客SR", 
+              "categoryUuid": "0f90024ab5912cf99aef2862adb450bc", 
+              "categoryName": "疯狂食客SR", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "疯狂食客SSR", 
+              "categoryUuid": "be60894c3ec772cc3450c7bd5a08d743", 
+              "categoryName": "疯狂食客SSR", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "大熊猫和花", 
+              "categoryUuid": "a47add35a27e980232f48ad1ab48bdb0", 
+              "categoryName": "大熊猫和花", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "故宫宫苑", 
+              "categoryUuid": "01227f24c9225b5ccfa9b1cedb3571e3", 
+              "categoryName": "故宫", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "萌芽熊", 
+              "categoryUuid": "7cfbfb38560d59787c87b27d2cc73ef3", 
+              "categoryName": "萌芽熊", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "汤姆猫", 
+              "categoryUuid": "ef8f3d2142d53e580bde61c25fffb672", 
+              "categoryName": "汤姆猫", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "敦煌", 
+              "categoryUuid": "9d0822c5c9a9166dbd91497b02850160", 
+              "categoryName": "敦煌", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "嫦娥", 
+              "categoryUuid": "39b8a757d03772ab0dac52809a9930cb", 
+              "categoryName": "嫦娥", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "丰子恺", 
+              "categoryUuid": "5a2831f6c7c4962d26ac1ce42a570bc0", 
+              "categoryName": "丰子恺的画", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "NOSENSE", 
+              "categoryUuid": "6e055859e7ba64049dacb38222467fad", 
+              "categoryName": "NOSENSE", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "大运数字会徽", 
+              "categoryUuid": "069dca8f57c0d8264419d6c3c5ce70cc", 
+              "categoryName": "大运会", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "三尺童子", 
+              "categoryUuid": "95799f1c36d335ea8c104c7e1a5841dc", 
+              "categoryName": "三尺童子", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "涂涂猫", 
+              "categoryUuid": "2a5c710ac3223f9722f3a05d97c77933", 
+              "categoryName": "涂涂猫", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "鲁道夫", 
+              "categoryUuid": "91ce94e0b00e2f383e8a7ce396320cc0", 
+              "categoryName": "鲁道夫和他的朋友们", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "捞世界", 
+              "categoryUuid": "9c89a72f59767642ff0019dbf182d8e0", 
+              "categoryName": "捞世界", 
+              "categoryCover": null
+          }, 
+          {
+              "name": "限定空投", 
+              "categoryUuid": "7a28433e28585bf28698762a2ba6d7f5", 
+              "categoryName": "限定空投", 
+              "categoryCover": null
+          }
+      ], 
+      "total": 24, 
+      "size": 40, 
+      "current": 1, 
+      "orders": [ ], 
+      "optimizeCountSql": true, 
+      "hitCount": false, 
+      "countId": null, 
+      "maxLimit": null, 
+      "searchCount": true, 
+      "pages": 1
+  }
+}

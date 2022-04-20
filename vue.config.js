@@ -38,14 +38,26 @@ module.exports = {
   //   },
   //   disableHostCheck: true
   // },
-
+  // css: {
+  //   // modules: true, // 是否开启支持'foo.module.css'样式
+  //   // 提取 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
+  //   extract: true, // 开启后，不能时时监听样式变更
+  //   sourceMap: false // 是否在构建样式地图，false将提高构建速度
+  //   loaderOptions: {
+  //     less: {
+  //       modifyVars: {
+  //         hack: `true: @import 'theme.less'`
+  //       }
+  //     }
+  //   }
+  // },
   configureWebpack: {
     name: name,
     resolve: {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
     /* plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
@@ -60,20 +72,20 @@ module.exports = {
     // },
     // 或者
     // 警告 webpack 的性能提示
-    // performance: {
-    //   hints:'warning',
-    //   //入口起点的最大体积
-    //   maxEntrypointSize: 500000000,
-    //   //生成文件的最大体积
-    //   maxAssetSize: 300000000,
-    //   //只给出 js 文件的性能提示
-    //   // assetFilter: function(assetFilename) {
-    //   //   return assetFilename.endsWith('.js');
-    //   // }
-    // },
-  }
-  /*  chainWebpack(config) {
-    // set svg-sprite-loader
+    performance: {
+      hints:'warning',
+      // 入口起点的最大体积
+      maxEntrypointSize: 10000000,
+      // 生成文件的最大体积
+      maxAssetSize: 30000000,
+      // 只给出 js 文件的性能提示
+      assetFilter: function(assetFilename) {
+        return assetFilename.endsWith('.js');
+      }
+    }
+  },
+   chainWebpack(config) {
+   /*// set svg-sprite-loader
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
@@ -88,7 +100,7 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
-      .end()
+      .end() */
     config
       .when(process.env.NODE_ENV !== 'development',
         config => {
@@ -110,10 +122,10 @@ module.exports = {
                   priority: 10,
                   chunks: 'initial' // only package third parties that are initially dependent
                 },
-                elementUI: {
-                  name: 'chunk-elementUI', // split elementUI into a single package
+                vant: {
+                  name: 'chunk-vant', // split vant into a single package
                   priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-                  test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
+                  test: /[\\/]node_modules[\\/]_?vant(.*)/ // in order to adapt to cnpm
                 },
                 commons: {
                   name: 'chunk-commons',
@@ -124,12 +136,12 @@ module.exports = {
                 }
               }
             })
-          config.optimization.runtimeChunk('single'),
-          {
-            from: path.resolve(__dirname, './public/robots.txt'),//防爬虫文件
-            to:'./',//到根目录下
-          }
+          config.optimization.runtimeChunk('single')
+          // ,{
+          //   from: path.resolve(__dirname, './public/robots.txt'),//防爬虫文件
+          //   to:'./',//到根目录下
+          // }
         }
-      )
-  } */
+      ) 
+  }
 }

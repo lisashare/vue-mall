@@ -1,6 +1,6 @@
 <template>
   <div>
-    goods 
+    个人设置
   </div>
 </template>
 

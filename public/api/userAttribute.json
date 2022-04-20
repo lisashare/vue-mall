@@ -1,0 +1,23 @@
+{
+	"code": 200,
+	"message": "成功",
+	"data": {
+		"userUuid": "b1040cdce0c441b3a2cc5ba4c3e80c9c",
+		"initiativeNum": 0,
+		"passiveNum": 55549,
+		"friendNum": 0,
+		"avatar": "https://theoneart-wechat.oss-cn-beijing.aliyuncs.com/uniapp-small-program/8.png",
+		"nickname": "叫我法师",
+		"stageName": "叫我法师",
+		"realName": "袁瑶",
+		"artDetail": "叫我法师，插画师及视觉设计师，毕业于东华大学。多次在国内各大展览中参加群展，鲜明的视觉色彩、扁平夸化的人物形体以及趣味的几何图形组合构成了其鲜明独特的创作风格。 擅长运用现代流行的扁平艺术风格表现画作，《世界名画》系列，是其较为标志性的代表作之一，通过鲜明大胆的色彩与几何艺术二次重构，重新诠释世界古典名画，赋予其新时代下的活力与趣味。 法师的插画具备较强的商业性，多合作于潮牌服装、文创产品、网红餐厅等客户，合作过中国国际时装周官方展会、OPPO、偶像梦幻祭2 、YAI次元餐厅、中联重科、大汉集团、长沙银行等知名客户。  合作经历： 中国国际时装周：《2022年春夏DHUB设计汇》 《偶像梦幻祭2》XYAI次元餐厅：ENSEMBLE STARS BIRTHDAT PARTY OPPO：《2021·全糖去冰》 中联重科：《未来，为智造而来》 大汉集团：《大有可为，汉动未来》 资格认证： 视觉中国认证插画师",
+		"introduce": null,
+		"level": 0,
+		"levelUuid": null,
+		"levelName": null,
+		"title": 0,
+		"isAuthor": 1,
+		"viewHomepage": 0,
+		"viewAssets": 0
+	}
+}

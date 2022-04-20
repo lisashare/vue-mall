@@ -1,6 +1,6 @@
 <template>
   <div>
-    goods 
+    忘记密码
   </div>
 </template>
 

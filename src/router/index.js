@@ -1,119 +1,180 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+/* Layout */
+import Layout from '@/layout'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [{
+      path: '/redirect/:path(.*)',
+      component: (resolve) => require(['@/views/redirect'], resolve)
+    }]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/mine',
-    component: () => import('@/views/mine/index.vue'),
+    path: '',
+    component: Layout,
+    // redirect: 'index',
     children: [
       {
         path: '',
-        name: 'User',
-        component: () => import('@/views/mine/User.vue')
+        component: Home,
+        name: 'Home'
       },
       {
-        path: 'treasure',
-        name: 'Treasure',
-        component: () => import('@/views/mine/Treasure.vue')
+        path: 'goods',
+        name: 'Goods',
+        component: () => import('@/views/goods/index.vue'),
+        meta: {
+          cache: true
+        }
       },
       {
-        path: 'collect',
-        name: 'Collect',
-        component: () => import('@/views/mine/Collect.vue')
-      },
-      {
-        path: 'buy',
-        name: 'Buy',
-        component: () => import('@/views/mine/Buy.vue')
-      },
-      {
-        path: 'release',
-        name: 'Release',
-        component: () => import('@/views/mine/Release.vue')
-      },
-      {
-        path: 'sold',
-        name: 'Sold',
-        component: () => import('@/views/mine/Sold.vue')
-      },
-      {
-        path: 'setting',
-        name: 'Setting',
-        component: () => import('@/views/setting/index.vue')
-      },
-      {
-        path: 'wallet',
-        component: () => import('@/views/wallet/index.vue'),
+        path: 'mine',
+        component: () => import('@/views/mine/index.vue'),
         children: [
           {
-            path: 'overview',
-            name: 'Overview',
-            component: () => import('@/views/wallet/Overview.vue')
+            path: '',
+            component: () => import('@/views/mine/User.vue'),
+            name: 'mine',
+            meta: {
+              title: 'mine'
+            },
           },
           {
-            path: 'bank',
-            name: 'Bank',
-            component: () => import('@/views/wallet/Bank.vue')
+            path: 'setting',
+            name: 'Setting',
+            component: () => import('@/views/setting/index.vue'),
+            children: [
+              {
+                path: '',
+                component: () => import('@/views/setting/Home.vue')
+              },
+              {
+                path: 'profile',
+                name: 'Profile',
+                component: () => import('@/views/setting/profile.vue')
+              }
+            ]
+          },
+          {
+            path: 'treasure',
+            name: 'Treasure',
+            component: () => import('@/views/mine/Treasure.vue'),
+            meta: {
+              title: 'treasure'
+            },
+          },
+          {
+            path: 'collect',
+            name: 'Collect',
+            component: () => import('@/views/mine/Collect.vue')
+          },
+          {
+            path: 'buy',
+            name: 'Buy',
+            component: () => import('@/views/mine/Buy.vue')
+          },
+          {
+            path: 'release',
+            name: 'Release',
+            component: () => import('@/views/mine/Release.vue')
+          },
+          {
+            path: 'sold',
+            name: 'Sold',
+            component: () => import('@/views/mine/Sold.vue')
+          },
+          {
+            path: 'wallet',
+            component: () => import('@/views/wallet/index.vue'),
+            children: [{
+              path: 'overview',
+              name: 'Overview',
+              component: () => import('@/views/wallet/Overview.vue')
+            },
+            {
+              path: 'bank',
+              name: 'Bank',
+              component: () => import('@/views/wallet/Bank.vue')
+            }]
           }
         ]
+      },
+      {
+        name: 'Login',
+        path: 'login',
+        component: () => import('@/views/member/Login.vue'),
+        meta: {
+          show: true,
+          title: '登录'
+        }
+      },
+      {
+        path: 'register',
+        component: () => import('@/views/member/Register.vue'),
+        meta: {
+          show: true,
+          title: '注册'
+        }
+      },
+      {
+        path: 'forget',
+        component: () => import('@/views/member/Forget.vue'),
+        meta: {
+          show: true,
+          title: '忘记密码'
+        }
+      },
+      {
+        path: '/about',
+        name: 'About',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      
+      {
+        path: '/artist',
+        name: 'Artist',
+        component: () => import('@/views/artist/index.vue')
+      },
+      {
+        path: '/join',
+        name: 'Join',
+        component: () => import('@/views/join/index.vue')
+      },
+      {
+        path: '/user',
+        name: 'User',
+        component: () => import('@/views/user/index.vue')
+      },
+      {
+        path: '/market',
+        name: 'Market',
+        component: () => import('@/views/market/index.vue')
+      },
+      {
+        path: '/hotspot',
+        name: 'Hotspot',
+        component: () => import('@/views/hotspot/index.vue')
+      },
+      {
+        path: '/app_download',
+        component: () => import('@/views/appDownload/index.vue')
+      },
+      {
+        path: '/404',
+        name: 'Page404',
+        component: () => import('@/views/error/404.vue')
       }
-
     ]
-  },
-  {
-    path: '/artist',
-    name: 'Artist',
-    component: () => import('@/views/artist/index.vue')
-  },
-  {
-    path: '/join',
-    name: 'Join',
-    component: () => import('@/views/join/index.vue')
-  },
-  {
-    path: '/user',
-    name: 'User',
-    component: () => import('@/views/user/index.vue')
-  },
-  {
-    path: '/market',
-    name: 'Market',
-    component: () => import('@/views/market/index.vue')
-  },
-  {
-    path: '/goods',
-    name: 'Goods',
-    component: () => import('@/views/goods/index.vue')
-  },
-  {
-    path: '/hotspot',
-    name: 'Hotspot',
-    component: () => import('@/views/hotspot/index.vue')
-  },
-  {
-    path: '/app_download',
-    component: () => import('@/views/appDownload/index.vue')
-  },
-  {
-    path: '/404',
-    name: 'Page404',
-    component: () => import('@/views/error/404.vue')
   },
   {
     path: '/:pathMatch(.*)',

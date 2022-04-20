@@ -1,0 +1,70 @@
+{
+  "code": 200, 
+  "message": "成功", 
+  "data": {
+      "records": [
+          {
+              "name": "1、版权确权及溯源", 
+              "summarize": "通过区块链技术来解决数字艺术品版权和溯源的问题，通过智能合约与业务应用层内实现逻辑处理和数据整合，让版权归属与收入分配的透明度达到新的台阶", 
+              "categoryName": "平台公告", 
+              "location": "home_B", 
+              "cover": "https://theoneart-common.oss-cn-qingdao.aliyuncs.com/author/小程序logo1637330958796.png", 
+              "updateBy": "admin", 
+              "releaseBy": "admin", 
+              "releaseTime": "2021-11-19 22:11:22", 
+              "activityStartTime": null, 
+              "activityEndTime": null, 
+              "uuid": "aa2fcd009eed92cdeae997596b7f90cc"
+          }, 
+          {
+              "name": "2、为行业降本增效", 
+              "summarize": "有效提高权属问题产生版权纠纷的解决效率，因版权区块链证据公信力强，可以减少大量诉讼周期和相关费用，普惠每一位创作者。", 
+              "categoryName": "平台公告", 
+              "location": "home_B", 
+              "cover": "https://theoneart-common.oss-cn-qingdao.aliyuncs.com/author/小程序logo1637331008348.png", 
+              "updateBy": "admin", 
+              "releaseBy": "admin", 
+              "releaseTime": "2021-11-19 22:10:12", 
+              "activityStartTime": null, 
+              "activityEndTime": null, 
+              "uuid": "ccff08470523ed59f5596798d4fd7336"
+          }, 
+          {
+              "name": "3、透明式版权保护", 
+              "summarize": "版权保护更加清晰透明，集权益存证、作品确权、数量控制以及盗版防范为一体，让原创者“不出门”实现版权保护。", 
+              "categoryName": "平台公告", 
+              "location": "home_B", 
+              "cover": "https://theoneart-common.oss-cn-qingdao.aliyuncs.com/author/小程序logo1637331061661.png", 
+              "updateBy": "admin", 
+              "releaseBy": "admin", 
+              "releaseTime": "2021-11-19 22:09:04", 
+              "activityStartTime": null, 
+              "activityEndTime": null, 
+              "uuid": "c3b8aa4a4ab0725e54479d4bacf2fcbc"
+          }, 
+          {
+              "name": "4、强大的技术支撑", 
+              "summarize": "平台立足于区块链技术在知识产权领域的应用，强大的加密算法和云计算能力支持每一次安全可靠的链上互动", 
+              "categoryName": "平台公告", 
+              "location": "home_B", 
+              "cover": "https://theoneart-common.oss-cn-qingdao.aliyuncs.com/author/小程序logo1637331088985.png", 
+              "updateBy": "admin", 
+              "releaseBy": "admin", 
+              "releaseTime": "2021-11-19 22:07:32", 
+              "activityStartTime": null, 
+              "activityEndTime": null, 
+              "uuid": "86e6ff12c733cdbd71ae3b448d89c56a"
+          }
+      ], 
+      "total": 4, 
+      "size": 20, 
+      "current": 1, 
+      "orders": [ ], 
+      "optimizeCountSql": true, 
+      "hitCount": false, 
+      "countId": null, 
+      "maxLimit": null, 
+      "searchCount": true, 
+      "pages": 1
+  }
+}

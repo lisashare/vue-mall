@@ -4,10 +4,15 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
+import '@/assets/styles/index.less'
+// 引入全部样式
+import 'vant/lib/index.less';
+
 import {
-  Button
+  Button, Tabbar, TabbarItem, Lazyload
 } from 'vant'
-Vue.use(Button)
+
+Vue.use(Button).use(Tabbar).use(TabbarItem).use(Lazyload);
 
 Vue.config.productionTip = false
 

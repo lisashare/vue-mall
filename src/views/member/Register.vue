@@ -1,6 +1,6 @@
 <template>
   <div>
-    goods 
+    注册
   </div>
 </template>
 

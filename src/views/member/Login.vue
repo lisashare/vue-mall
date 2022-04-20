@@ -1,6 +1,6 @@
 <template>
   <div>
-    goods 
+    登录
   </div>
 </template>
 
