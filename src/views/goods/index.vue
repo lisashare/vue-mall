@@ -1,6 +1,6 @@
 <template>
   <div>
-    goods 
+    goods {{ id }}
   </div>
 </template>
 
@@ -8,8 +8,16 @@
 export default {
   data () {
     return {
-     
+      id: ''
     }
+  },
+  watch: {
+    $route () {
+      this.id = this.$route.query.id
+    }
+  },
+  created () {
+    this.id = this.$route.query.id
   }
 }
 </script>

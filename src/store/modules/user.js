@@ -5,10 +5,9 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 const state = {
   token: getToken(),
   roles: [],
-  name: '名字',
   userinfo: {
     avatar: require('@/assets/images/3.png'),
-    username: '',
+    username: '养土的肥',
     nickname: '',
     mobile: ''
   }
@@ -17,9 +16,6 @@ const state = {
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
-  },
-  SET_NAME: (state, name) => {
-    state.name = name
   },
   SET_USERINFO: (state, userInfo) => {
     // state.userinfo.avatar = userInfo.avatar

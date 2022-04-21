@@ -47,8 +47,11 @@ const routes = [
             },
           },
           {
+            path: 'attention/:type',
+            component: () => import('@/views/mine/Attention.vue')
+          },
+          {
             path: 'setting',
-            name: 'Setting',
             component: () => import('@/views/setting/index.vue'),
             children: [
               {
@@ -61,6 +64,11 @@ const routes = [
                 component: () => import('@/views/setting/profile.vue')
               }
             ]
+          },
+          {
+            path: 'gift',
+            name: 'Gift',
+            component: () => import('@/views/mine/Gift.vue')
           },
           {
             path: 'treasure',
@@ -137,7 +145,7 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/agreement/About.vue')
       },
       
       {
@@ -148,7 +156,10 @@ const routes = [
       {
         path: '/join',
         name: 'Join',
-        component: () => import('@/views/join/index.vue')
+        component: () => import('@/views/join/index.vue'),
+        meta: {
+          title: '加入我们'
+        }
       },
       {
         path: '/user',
@@ -168,6 +179,18 @@ const routes = [
       {
         path: '/app_download',
         component: () => import('@/views/appDownload/index.vue')
+      },
+      {
+        path: '/question',
+        component: () => import('@/views/agreement/Question.vue')
+      },
+      {
+        path: '/policies',
+        component: () => import('@/views/agreement/Policies.vue')
+      },
+      {
+        path: '/terms',
+        component: () => import('@/views/agreement/Terms.vue')
       },
       {
         path: '/404',

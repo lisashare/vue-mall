@@ -5,14 +5,11 @@
   -webkit-touch-callout: text; 
 }
 
-html {
-  box-sizing: border-box;
-}
 
 *,
 *:before,
 *:after {
- box-sizing: inherit;
+	box-sizing: border-box;
 }
 
 body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,figure,form,fieldset,legend,input,textarea,button,p,blockquote,th,td,pre{margin:0;padding:0}

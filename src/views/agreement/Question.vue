@@ -1,15 +1,14 @@
 <template>
-  <div>
-    header
+  <div class="question">
+    question
   </div>
 </template>
 
 <script>
-
 export default {
   data () {
     return {
-      
+     
     }
   }
 }

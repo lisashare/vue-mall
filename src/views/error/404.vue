@@ -1,5 +1,9 @@
 <template>
-  <div class="errPage-container">404</div>
+  <div class="errPage-container">
+    <van-empty image="error" :image-size="300">
+      <p class="text-md">{{ 404 }}</p>
+    </van-empty>
+  </div>
 </template>
 
 <script>
@@ -11,4 +15,5 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

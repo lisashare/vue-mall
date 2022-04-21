@@ -1,11 +1,13 @@
 <template>
   <div>
-    艺术家
+    <ModuleTitle title="艺术家"></ModuleTitle>
   </div>
 </template>
 
 <script>
+import ModuleTitle from '@/components/ModuleTitle/index.vue'
 export default {
+  components: { ModileTitle },
   data () {
     return {
 

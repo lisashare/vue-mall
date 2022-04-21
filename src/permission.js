@@ -2,12 +2,13 @@ import router from './router'
 // import store from './store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-// import { getToken } from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false })
 
-// const whiteList = ['/login', '/register', 'auth-redirect', '/account/edit']
+// const whiteList = ['/login', '/register', 'auth-redirect', '/mine']
+const toLogin = ['/mine']
 
 router.beforeEach(async (to, from, next) => {
   // start progress bar
@@ -16,10 +17,25 @@ router.beforeEach(async (to, from, next) => {
   // set page title
   document.title = getPageTitle(to.meta.title)
 
-  next()
-  /* const hasToken = getToken()
 
-  if(hasToken) {
+  const hasToken = getToken()
+  if (hasToken) {
+    if (to.path === '/login') {
+      next({ path: '/' })
+    } else {
+      next()
+      NProgress.done()
+    }
+  } else {
+    // if (toLogin.indexOf(to.path) !== -1) {
+      // next(`/login?redirect=${to.fullPath}`)
+    // } else {
+      next()
+    // }
+    NProgress.done()
+  }
+
+   /* if(hasToken) {
     if(to.path === '/login') {
       next({ path: '/' })
       NProgress.down()
@@ -65,6 +81,7 @@ router.beforeEach(async (to, from, next) => {
     }
   }
   */
+  
 })
 
 router.afterEach(() => {

@@ -96,3 +96,27 @@ js-cookie
 配置路由 & utils工具
 
 响应式设备判断 & layout 布局，修改路由
+
+
+### 开发中的问题记录
+
+* 在vue文件中使用<van-image>引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
+:src="require(url)"
+
+```html
+<van-image :src="require('@/common/imgs/more.png')" />
+```
+* 配置 index.html 标题
+
+```js
+<%= htmlWebpackPlugin.options.title %>
+
+chainWebpack: config => {
+  config
+  .plugin('html')
+  .tap(args => {
+      args[0].title = '你的标题名字'
+      return args
+  })},
+```
+

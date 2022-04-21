@@ -28,9 +28,7 @@ export default {
       device: state => state.app.device
     })
   },
-  mounted () {
-    console.log(this.$router, 'index')
-  }
+  mounted () {}
 }
 </script>
 

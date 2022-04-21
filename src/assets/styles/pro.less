@@ -1,0 +1,94 @@
+.c-button {
+  display: inline-block;
+  color: var(--color-neutral-90);
+  padding: 6px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.c-button--full-width {
+
+} 
+
+.c-button--primary {
+  background-color: var(--color-primary-700);
+}
+
+.c-button--primary :hover {
+  background-color: var(--color-primary-500);
+}
+
+.c-button--md {
+
+}
+
+.input-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer
+}
+
+.input-checkbox__fauxbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px #999;
+  transition: background 250ms ease, box-shadow 250ms ease
+}
+
+.input-checkbox__fauxbox:before,.input-checkbox__fauxbox:after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  bottom: 5px;
+  width: 0;
+  height: 1px;
+  background: #333;
+  border-radius: 3px;
+  transform-origin: center left;
+  transition: width 200ms ease
+}
+
+.input-checkbox--checked .input-checkbox__fauxbox:before {
+  width: 6px;
+  transition-delay: 0ms
+}
+
+.input-checkbox--checked .input-checkbox__fauxbox:after {
+  width: 10px;
+  transition-delay: 180ms
+}
+
+.input-checkbox--checked .input-checkbox__fauxbox:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  height: 1px;
+  background: #000;
+  transform: rotate(45deg)
+}
+
+.input-checkbox__fauxbox:before {
+  transform: rotate(45deg);
+  left: 4px;
+  bottom: 9px;
+  transition-delay: 180ms
+}
+
+.input-checkbox__fauxbox:after {
+  transform: rotate(-50deg);
+  transition-delay: 0ms
+}
+
+.input-checkbox__realbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1
+}

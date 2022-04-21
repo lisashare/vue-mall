@@ -17,10 +17,7 @@ export default {
       return this.$route.path
     }
   },
-  mounted () {
-    console.log(this.$router, this.$route)
-    console.log(this.addTags())
-  },
+  mounted () {},
   methods: {
     addTags () {
       const { name } = this.$route
@@ -36,10 +33,16 @@ export default {
 <style lang="less">
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px - 65px);
   width: 100%;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .app-main {
+    min-height: calc(100vh - 350px);
+  }
 }
 
 .fixed-header+.app-main {
