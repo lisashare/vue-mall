@@ -7,7 +7,7 @@
 <script>
 import ModuleTitle from '@/components/ModuleTitle/index.vue'
 export default {
-  components: { ModileTitle },
+  components: { ModuleTitle },
   data () {
     return {
 

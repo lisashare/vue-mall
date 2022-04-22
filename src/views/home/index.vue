@@ -1,15 +1,17 @@
 <template>
   <div class="home">
+    <Swiper />
     <div class="container">
-      111
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import Swiper from './components/Swiper'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { Swiper },
+  mounted () {}
 }
 </script>

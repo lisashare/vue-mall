@@ -1,23 +1,27 @@
 <template>
   <div class="page_header">
     <header>
-      <div class="container flex justify-between h-full text-sm">
+      <div class="container flex h-full text-sm justify-center md-justify-start">
         <h2 class="logo"><router-link to="/"><img src="@/assets/logo.png" alt=""></router-link></h2>
-        <div class="flex">
-          <!-- <ul class="flex">
-            <li>登录</li>
-            <li>登录</li>
-          </ul> -->
-          <div class="flex items-center">
-            <div class="cursor-pointer" v-if="!username" @click="handleLogin">登录</div>
-            <div v-else class="flex items-center cursor-pointer">
-              <router-link to="/mine" class="flex items-center">
-                <div class="avatar rounded-circle overflow-hidden">
-                  <img :src="userinfo.avatar" alt="">
-                </div>
-                <div class="px-8">{{ userinfo.username }}</div>
-              </router-link>
-              <div @click="handleLogout">退出</div>
+        <div class="md-block hidden flex-1">
+          <div class="flex flex-1 h-full">
+            <ul class="flex items-center flex-1 md-px-24 h-full">
+              <li class="px-24"><router-link to="/">首页</router-link></li>
+              <li class="px-24"><router-link to="/market">产品</router-link></li>
+              <li class="px-24"><router-link to="/artist">艺术家</router-link></li>
+              <li class="px-24"><router-link to="/hotspot">热点</router-link></li>
+            </ul>
+            <div class="flex items-center">
+              <div class="cursor-pointer" v-if="!username" @click="handleLogin">登录</div>
+              <div v-else class="flex items-center cursor-pointer">
+                <router-link to="/mine" class="flex items-center">
+                  <div class="avatar rounded-circle overflow-hidden flex-none">
+                    <img :src="userinfo.avatar" alt="">
+                  </div>
+                  <div class="px-8">{{ userinfo.username }}</div>
+                </router-link>
+                <div @click="handleLogout">退出</div>
+              </div>
             </div>
           </div>
         </div>

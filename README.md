@@ -97,6 +97,12 @@ js-cookie
 
 响应式设备判断 & layout 布局，修改路由
 
+npm install swiper@5 vue-awesome-swiper@4.1.1 --save
+[vue-awesime-swiper](https://v1.github.surmon.me/vue-awesome-swiper)
+
+[animejs](https://animejs.com/)
+
+[clipboard](https://clipboardjs.com)
 
 ### 开发中的问题记录
 
@@ -119,4 +125,3 @@ chainWebpack: config => {
       return args
   })},
 ```
-

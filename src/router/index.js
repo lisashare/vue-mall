@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/home/index.vue'
 /* Layout */
 import Layout from '@/layout'
 
@@ -29,10 +29,14 @@ const routes = [
       {
         path: 'goods',
         name: 'Goods',
-        component: () => import('@/views/goods/index.vue'),
-        meta: {
-          cache: true
-        }
+        component: () => import('@/views/goods/index.vue')
+        // ,meta: {
+        //   cache: true
+        // }
+      },
+      {
+        path: 'buy/:id',
+        component: () => import('@/views/order/Buy.vue')
       },
       {
         path: 'mine',
@@ -102,7 +106,7 @@ const routes = [
             path: 'wallet',
             component: () => import('@/views/wallet/index.vue'),
             children: [{
-              path: 'overview',
+              path: '',
               name: 'Overview',
               component: () => import('@/views/wallet/Overview.vue')
             },

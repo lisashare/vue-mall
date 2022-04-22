@@ -8,15 +8,17 @@ import './permission'
 import '@/assets/styles/index.less'
 // 引入全部样式
 import 'vant/lib/index.less';
-
+import anime from 'animejs/lib/anime.es.js'
 import {
-  Button, Icon, Tabbar, TabbarItem, Lazyload, Toast, Empty, Image as VanImage, Overlay, Uploader,  Grid, GridItem   
+  Button, Icon, Tabbar, TabbarItem, Lazyload, Toast, Notify, Empty, Image as VanImage, Overlay, Uploader,  Grid, GridItem, Sidebar, SidebarItem, Stepper    
 } from 'vant'
 
-Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Lazyload).use(Toast).use(Empty).use(VanImage).use(Overlay).use(Uploader).use(Grid).use(GridItem);
+Vue.use(Button).use(Icon).use(Tabbar).use(TabbarItem).use(Lazyload).use(Toast).use(Notify).use(Empty).use(VanImage).use(Overlay).use(Uploader).use(Grid).use(GridItem).use(Sidebar).use(SidebarItem).use(Stepper);
+
+Vue.prototype.$anime = anime
 
 Vue.config.productionTip = false
-
+ 
 new Vue({
   router,
   store,

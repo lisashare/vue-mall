@@ -8,7 +8,7 @@
 export default {
   props: {
     title: {
-      type: string,
+      type: String,
       default: ''
     }
   },

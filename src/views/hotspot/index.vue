@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     热点
   </div>
 </template>
