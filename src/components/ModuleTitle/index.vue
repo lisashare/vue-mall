@@ -1,6 +1,6 @@
 <template>
   <div class="module-title">
-    <h2>{{ title }}</h2>
+    <h2 class="text-center">{{ title }}</h2>
   </div>
 </template>
 

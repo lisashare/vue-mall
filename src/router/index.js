@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/home/index.vue'
+import store from '../store'
 /* Layout */
 import Layout from '@/layout'
 
@@ -27,7 +28,7 @@ const routes = [
         name: 'Home'
       },
       {
-        path: 'goods',
+        path: 'goods/:id',
         name: 'Goods',
         component: () => import('@/views/goods/index.vue')
         // ,meta: {
@@ -73,6 +74,11 @@ const routes = [
             path: 'gift',
             name: 'Gift',
             component: () => import('@/views/mine/Gift.vue')
+          },
+          {
+            path: 'gift_management',
+            name: 'GiftManagement',
+            component: () => import('@/views/mine/GiftManagement.vue')
           },
           {
             path: 'treasure',
@@ -166,7 +172,7 @@ const routes = [
         }
       },
       {
-        path: '/user',
+        path: '/user/:id',
         name: 'User',
         component: () => import('@/views/user/index.vue')
       },
@@ -195,6 +201,18 @@ const routes = [
       {
         path: '/terms',
         component: () => import('@/views/agreement/Terms.vue')
+      },
+      {
+        path: '/sm',
+        component: () => import('@/views/error/SystemsMaintenance.vue'),
+        beforeEnter: (to, from, next) => {
+          // 直接进入系统维护页面，如果为 false 则页面重定向到 404
+          if (!store.state.app.systemsMaintenance) {
+            next('/404')
+          } else {
+            next()
+          }
+        } 
       },
       {
         path: '/404',

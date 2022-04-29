@@ -48,7 +48,7 @@
               </div>
             </div>
             <div class="sidebar-right flex-1 px-12 md-px-32 lg-px-48">
-            <div class="content">我的礼物</div>
+            <div class="content">赠与管理</div>
           </div>
         </div>
       </div>

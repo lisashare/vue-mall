@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .collapsible {
   border-radius: 4px;
   background-color: var(--color-neutral-100);

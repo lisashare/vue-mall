@@ -45,6 +45,21 @@ export function parseTime (time, pattern) {
   return time_str
 }
 
+export function formatSeconds (time) {
+  time = time / 1000
+  // let days = Math.floor(time / (60 * 60 * 24));
+  let modulo = time % (60 * 60 * 24);
+  let hours = Math.floor(modulo / (60 * 60));
+      hours = hours < 10 ? ('0' + hours) : hours;
+      modulo = modulo % (60 * 60);
+  let minutes = Math.floor(modulo / 60);
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+  let seconds = modulo % 60;
+      seconds = ('0' + seconds).slice(-2)
+  let str = hours + ':' + minutes + ':' + seconds
+  return str
+}
+
 // 添加日期范围
 export function addDateRange (params, dateRange) {
   var search = params
@@ -510,6 +525,10 @@ export function agoDay () {
   return endTime.getFullYear() + '-' + month + '-' + date
 }
 
+/**
+ * @param {number} 1234567
+ * @returns {string} 1,234,567.00
+ */
 export function convert (money) {
   if (!money) { return }
   var m = money.toString().split('.')
@@ -523,8 +542,99 @@ export function convert (money) {
   return m1 + m2
 }
 
+/**
+ * @param {number} 1234567
+ * @returns {string} 1,234,567.00 00是sup上角标
+ */
+export function convertSup (money) {
+  if (!money) return null
+  var m = money.toString().split('.')
+  var m1 = m[0]
+  if (!m[1]) { m[1] = '00' } // 加不加0看需求
+  var m2 = m.length > 1 ? '<sup>.' + m[1] + '</sup>': ''
+  var reg = /(\d+)(\d{3})/
+  while (reg.test(m1)) {
+    m1 = m1.replace(reg, '$1' + ',' + '$2')
+  }
+  return m1 + m2
+}
+
+/**
+ * @param {number} 12345
+ * @returns {string} 1.23万
+ */
 export function convertNum (value) {
-  if (value.toString().length < 5) return value
+  if (!value) return null
+  if (!isNaN(value)) value = value.toString()
+  if (value.length < 5) return value
   value = Math.floor((value / 10000) * 100) / 100 // 保留小数点两位
   return value + '万'
+}
+
+/**
+ * @param {string} 18310746666
+ * @returns {string} 183****6666 前3后4，中间4星
+ */
+
+export function mobileToStar (value) {
+  if (!value) return null
+  let reg = '', str = ''
+  if (!isNaN(value)) value = value.toString()
+  let len = value.length
+  if (len === 4) {
+    reg = /^([A-Za-z0-9]{1})([A-Za-z0-9]{2})([A-Za-z0-9]{1})$/
+    str = value.replace(reg, '$1**$3')
+  } else if (len === 5) {
+    reg = /^([A-Za-z0-9]{1})([A-Za-z0-9]{3})([A-Za-z0-9]{1})$/
+    str = value.replace(reg, '$1***$3')
+  } else if (len > 5 && len < 21) { // 隐藏中间4位
+    var num = Math.floor(len / 2) - 2
+    str = value.substr(0, num) + '****' + value.substr(num + 4)
+  } else if (len > 20) {
+    str = value.substr(0, 6) + '****' + value.substr(len - 6)
+  }
+  return str
+}
+
+// JavaScript中Number最大的安全整数为16位。如果超出后还需使用可以考虑转换成String类型
+/**
+ * 隐藏身份证中间8位数
+ * @param {data} 传入数据
+ * 格式：530026******2101
+ */
+export function idCardToStar (value) {
+  if (!value) return null
+  if (!isNaN(value)) value = value.toString()
+  let reg = /^(.{6})(.+)(.{4})$/
+  let str = value.replace(reg, '$1********$3')
+  return str
+}
+
+/**
+ * 只隐藏姓名中间的字
+ * @param {string} 传入数据
+ * 格式：张*三
+ */
+export function fullNameCenterToStar (name) {
+  let newName = ''
+  let arr = Array.from(name)
+  newName = arr.slice(0, 1).join('') + '*' + arr.slice(-1).join('')
+  return newName
+}
+
+/**
+ * 只显示姓氏
+ * @param {string} 传入数据
+ * 格式：张**
+ */
+export function firstNameToStar (name) {
+  let newName = ''
+  let arr = Array.from(name)
+  let star = ''
+  for (let i = 0, len = arr.length - 1;i < len; i++) {
+    if(i >= 6) break // star 最多显示6位
+    star += '*'
+  }
+  newName = arr.slice(0, 1).join('') + star
+  return newName
 }

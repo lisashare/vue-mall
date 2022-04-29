@@ -10,8 +10,8 @@
           </div>
         </div>
         <div class="comment-stats flex text-grey-600 text-sm">
-          <div class="likes mr-12">赞</div>
-          <div class="reply-action">回复</div>
+          <div class="likes mr-12"><van-icon name="like-o" class="mr-4" />赞</div>
+          <div class="reply-action"><van-icon name="comment-o" class="mr-4" />回复</div>
         </div>
       </div>
       <div class="comment-content pl-48 text-sm">
@@ -34,8 +34,8 @@
           </div>
         </div>
         <div class="comment-stats flex text-grey-600 text-sm">
-          <div class="likes mr-12">赞</div>
-          <div class="reply-action">回复</div>
+          <div class="likes mr-12"><van-icon name="like-o" class="mr-4" />赞</div>
+          <div class="reply-action"><van-icon name="comment-o" class="mr-4" />回复</div>
         </div>
       </div>
       <div class="comment-content pl-48 text-sm">

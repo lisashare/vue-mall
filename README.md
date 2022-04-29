@@ -104,6 +104,10 @@ npm install swiper@5 vue-awesome-swiper@4.1.1 --save
 
 [clipboard](https://clipboardjs.com)
 
+qrcode
+
+moment
+
 ### 开发中的问题记录
 
 * 在vue文件中使用<van-image>引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
@@ -115,8 +119,9 @@ npm install swiper@5 vue-awesome-swiper@4.1.1 --save
 * 配置 index.html 标题
 
 ```js
-<%= htmlWebpackPlugin.options.title %>
+<title><%= htmlWebpackPlugin.options.title %></title>
 
+vue.config.js
 chainWebpack: config => {
   config
   .plugin('html')
@@ -125,3 +130,77 @@ chainWebpack: config => {
       return args
   })},
 ```
+
+```js
+<title><%= webpackConfig.name %></title>
+
+vue.config.js
+module.exports = {
+  // ...
+  configureWebpack: {
+    name: '你的标题名字'
+  }
+}
+```
+* 单独将图片放置在CDN
+```js
+module.exports = {
+  // ...
+  chainWebpack: config => {
+    config
+      .module
+      .rule('images')
+      .test(/\.(png|jpe?g|gif)$/i)
+      .use('url-loader') 
+      // 1. url-loader本身的作用是将图片引用方式转换为base64的内联引用方式
+      // 2. 通过配置limit, 可使文件大小小于此limit值(单位为byte)的文件转换为base64格式, 大于此limit的, 会执行options中的fallback配置项插件
+      // 3. fallback默认值为file-loader, 而且url-loader的options配置项也会被传递给file-loader
+      .loader('url-loader')
+      .options({
+        limit: 100,
+        // 如果项目的需求是只在生产环境下使用cdn, 测试和开发环境下使用相对路径
+        // publicPath: process.env.NODE_ENV === 'production' ? 'https://oss.xx.com/img' : './',
+        publicPath: 'http://oss.xxx.com/img',
+        // 将图片打包到dist/img文件夹下, 不配置则打包到dist文件夹下
+        outputPath: 'img',
+        // 配置打包后图片文件名
+        name: '[name].[ext]'
+      })
+      .end()
+  }
+}
+
+```
+
+#### 海报参考文档
+
+https://ethan.pub/?p=846
+https://www.w3cschool.cn/article/37137920.html
+
+#### 倒计时
+
+距离开售 19:25:00
+https://www.jianshu.com/p/280a709e7121
+
+#### others
+
+一个项目有两个请求域名的话，可以将request.js多配置一套
+
+
+
+todo: 
+
+消息
+
+权限页面预览：账号授权？
+
+登录手机号前缀
+
+短信验证码防刷验证
+
+分页
+
+搜索
+
+版本？
+

@@ -22,6 +22,21 @@ module.exports = {
   // lintOnSave: process.env.NODE_ENV === 'development',
   // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
   productionSourceMap: false,
+  pwa: {
+    name: name,
+    themeColor: '#4DBA87',
+    msTileColor: '#000000',
+    // appleMobileWebAppCapable: 'yes',
+    // appleMobileWebAppStatusBarStyle: 'black',
+
+    // // configure the workbox plugin
+    // workboxPluginMode: 'InjectManifest',
+    // workboxOptions: {
+    //   // swSrc is required in InjectManifest mode.
+    //   swSrc: 'dev/sw.js',
+    //   // ...other Workbox options...
+    // }
+  },
   // webpack-dev-server 相关配置
   // devServer: {
   //   host: '0.0.0.0',
@@ -75,9 +90,9 @@ module.exports = {
     performance: {
       hints:'warning',
       // 入口起点的最大体积
-      maxEntrypointSize: 10000000,
+      maxEntrypointSize: 160000000,
       // 生成文件的最大体积
-      maxAssetSize: 30000000,
+      maxAssetSize: 40000000,
       // 只给出 js 文件的性能提示
       assetFilter: function(assetFilename) {
         return assetFilename.endsWith('.js');

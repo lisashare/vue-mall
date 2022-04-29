@@ -1,5 +1,7 @@
 <template>
   <div>
+    <template v-if="!blocked">
+      
     <div v-if="device === 'mobile'">
       <div class="container">
         <div class="mine">
@@ -17,7 +19,7 @@
           <div>
             <van-grid :column-num="3">
               <van-grid-item icon="photo-o" text="我的礼物" to="/mine/gift" />
-              <van-grid-item icon="photo-o" text="赠与管理" to="/mine/gift" />
+              <van-grid-item icon="photo-o" text="赠与管理" to="/mine/gift_management" />
               <van-grid-item icon="photo-o" text="我的藏品" to="/mine/treasure" />
               <van-grid-item icon="photo-o" text="支付管理" to="/mine/wallet" />
               <van-grid-item icon="photo-o" text="个人设置" to="/mine/setting" />
@@ -34,102 +36,76 @@
       </div>
     </div>
     <div v-else>
-      <div class="container flex">
-        <div class="sidebar-left">
-          <van-sidebar>
-            <van-sidebar-item title="个人中心" to="/mine" />
-          </van-sidebar>
-           <div>
-            <h3>常用管理</h3>
-            <div>
-              <van-sidebar v-model="activeKey">
-                <van-sidebar-item title="我的藏品" to="/mine/treasure" />
-              </van-sidebar>
-            </div>
-            <div>
-              <van-sidebar v-model="activeKey">
-                <van-sidebar-item title="我的礼物" to="/mine/gift" />
-              </van-sidebar>
-            </div>
-            <div>
-              <van-sidebar v-model="activeKey">
-                <van-sidebar-item title="赠与管理" to="/mine/gift" />
-              </van-sidebar>
-            </div>
-          </div>
-          <div>
-            <h3>社交数据</h3>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我的关注" to="/mine/attention/follow" />
-            </van-sidebar>
-          </div>
-          <div>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我的粉丝" to="/mine/attention/fans" />
-            </van-sidebar>
-          </div>
-          <div>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我喜欢的" to="/mine/collect" />
-            </van-sidebar>
-          </div>
-          <div>
-            <h3>我的订单</h3>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我买到的" to="/mine/buy" />
-            </van-sidebar>
-          </div>
-          <div>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我发布的" to="/mine/release" />
-            </van-sidebar>
-          </div>
-          <div>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="我卖出的" to="/mine/sold" />
-            </van-sidebar>
-          </div>
-          <div>
-            <h3>支付管理</h3>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="支付总览" to="/mine/wallet" />
-            </van-sidebar>
-            <div>
-              <van-sidebar v-model="activeKey">
-                <van-sidebar-item title="银行卡绑定" to="/mine/wallet/bank" />
-              </van-sidebar>
-            </div>
-          </div>
-          <div>
-            <h3>设置管理</h3>
-            <van-sidebar v-model="activeKey">
-              <van-sidebar-item title="个人设置" to="/mine/setting" />
-            </van-sidebar>
-          </div>
-        </div>
-        <div class="sidebar-right flex-1">
-          <div class="user-wallet">
-            <div class="flex justify-between">
-              <div>我的钱包</div>
-              <div class="cursor-pointer" @click="handleShowEye">
-                <van-icon name="eye-o" v-show="showEye" />
-                <van-icon name="closed-eye" v-show="!showEye" />
+      <div class="container">
+        <div class="flex p-12 md-p-32 lg-p-48">
+          <div class="sidebar-left">
+            <div class="sidebar-nav">
+              <div class="sidebar-nav-item i-mb-0">
+                <h2><router-link to="/mine">个人中心</router-link></h2>
+              </div>
+              <div class="sidebar-nav-item">
+                <h2>常用管理</h2>
+                <ul class="text-sm">
+                  <li><router-link to="/mine/treasure">我的藏品</router-link></li>
+                  <li><router-link to="/mine/gift">我的礼物</router-link></li>
+                  <li><router-link to="/mine/gift_management">赠与管理</router-link></li>
+                </ul>
+              </div>
+              <div class="sidebar-nav-item">
+                <h2>社交数据</h2>
+                <ul class="text-sm">
+                  <li><router-link to="/mine/attention/follow">我的关注</router-link></li>
+                  <li><router-link to="/mine/attention/fans">我的粉丝</router-link></li>
+                  <li><router-link to="/mine/collect">我喜欢的</router-link></li>
+                </ul>
+              </div>
+              <div class="sidebar-nav-item">
+                <h2>我的订单</h2>
+                <ul class="text-sm">
+                  <li><router-link to="/mine/buy">我买到的</router-link></li>
+                  <li><router-link to="/mine/release">我发布的</router-link></li>
+                  <li><router-link to="/mine/sold">我卖出的</router-link></li>
+                </ul>
+              </div>
+              <div class="sidebar-nav-item">
+                <h2>支付管理</h2>
+                <ul class="text-sm">
+                  <li><router-link to="/mine/wallet">支付总览</router-link></li>
+                  <li><router-link to="/mine/wallet/bank">银行卡绑定</router-link></li>
+                </ul>
+              </div>
+              <div class="sidebar-nav-item">
+                <h2>设置管理</h2>
+                <ul class="text-sm">
+                  <li><router-link to="/mine/setting">个人设置</router-link></li>
+                </ul>
               </div>
             </div>
-            <div>
-              <div class="content">
-                <div class="flex">
-                  <div class="flex-1 text-center">
-                    <p>金额</p>
-                    <div v-text="showEye ? price:'***'"></div>
-                  </div>
-                  <div class="flex-1 text-center">
-                    <p>金额</p>
-                    <div v-text="showEye ? price:'***'"></div>
-                  </div>
-                  <div class="flex-1 text-center">
-                    <p>金额</p>
-                    <div v-text="showEye ? price:'***'"></div>
+          </div>
+          <div class="sidebar-right flex-1 px-12 md-px-32 lg-px-48">
+            <div class="user-wallet">
+              <div class="flex justify-between">
+                <div>我的钱包</div>
+                <div class="cursor-pointer" @click="handleShowEye">
+                  <van-icon name="eye-o" v-show="showEye" />
+                  <van-icon name="closed-eye" v-show="!showEye" />
+                </div>
+              </div>
+              <div>
+                <div class="content">
+                  <div class="flex">
+                    <div class="flex-1 text-center">
+                      <p>金额</p>
+                      <div v-text="showEye ? price:'***'"></div>
+                    </div>
+                    <div class="flex-1 text-center">
+                      <p>金额</p>
+                      <div v-text="showEye ? price:'***'"></div>
+                    </div>
+                    <div class="flex-1 text-center">
+                      <p>金额</p>
+                      <div v-text="showEye ? price:'***'"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -138,6 +114,10 @@
         </div>
       </div>
     </div>
+    </template>
+    <template v-else>
+      <div class="container">你的账号已被封禁</div>
+    </template>
   </div>
 </template>
 
@@ -152,7 +132,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['device', 'userinfo', 'username'])
+    ...mapGetters(['device', 'userinfo', 'username', 'blocked'])
   },
   methods: {
     handleShowEye () {
@@ -163,11 +143,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.avatar {
-  img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-  }
+.mine /deep/.van-grid-item__text {
+  font-size: 14px;
 }
 </style>

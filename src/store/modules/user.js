@@ -10,7 +10,8 @@ const state = {
     username: '养土的肥',
     nickname: '',
     mobile: ''
-  }
+  },
+  blocked: true
 }
 
 const mutations = {

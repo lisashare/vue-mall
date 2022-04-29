@@ -61,3 +61,19 @@ export function saleRecord (params) {
     params
   })
 }
+
+export function goodsList (params) {
+  return request({
+    url: '/api/goodsList.json',
+    method: 'get',
+    params
+  })
+}
+
+export function detail (params) {
+  return request({
+    url: '/api/detail.json',
+    method: 'get',
+    params
+  })
+}
