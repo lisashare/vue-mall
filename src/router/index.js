@@ -36,8 +36,12 @@ const routes = [
         // }
       },
       {
-        path: 'buy/:id',
-        component: () => import('@/views/order/Buy.vue')
+        path: 'cart',
+        component: () => import('@/views/cart/index.vue')
+      },
+      {
+        path: 'order/:id',
+        component: () => import('@/views/order/Detail.vue')
       },
       {
         path: 'mine',
@@ -157,7 +161,11 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/agreement/About.vue')
       },
-      
+      {
+        path: '/message',
+        name: 'Message',
+        component: () => import('@/views/message/index.vue')
+      },
       {
         path: '/artist',
         name: 'Artist',

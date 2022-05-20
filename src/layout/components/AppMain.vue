@@ -45,6 +45,12 @@ export default {
   }
 }
 
+@media (max-height: 600px) {
+  .app-main {
+    min-height: 100vh;
+  }
+}
+
 .fixed-header+.app-main {
   padding-top: 50px;
 }

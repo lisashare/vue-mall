@@ -5,7 +5,6 @@
   -webkit-touch-callout: text; 
 }
 
-
 *,
 *:before,
 *:after {
@@ -70,6 +69,10 @@ input::placeholder,textarea::placeholder {
 }
 .fr {
   float: right
+}
+
+button:focus {
+	outline: none!important;
 }
 
 /* reset end */

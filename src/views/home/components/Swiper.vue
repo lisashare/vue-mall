@@ -5,12 +5,14 @@
         <div class="img-box">
           <img src="@/assets/images/t1_16x9.png" alt="" class="">
         </div>
-        <div class="slide-caption container cursor-pointer">
-          <h2 class="md-text-xl text-md text-white">用创新点缀人生，让科技融入理想。</h2>
-          <h3 class="md-text-lg text-sm text-white mt-12">用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。</h3>
-          <!-- <button class="btn-explore mx-auto mt-24"></button> -->
-          <div class="text-center mt-24">
-            <van-button type="warning" class="mx-auto">探索更多</van-button>
+        <div class="slide-caption cursor-pointer">
+          <div>
+            <h2 class="md-text-xl text-md text-white">用创新点缀人生，让科技融入理想。</h2>
+            <h3 class="md-text-lg text-sm text-white mt-12">用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。</h3>
+            <!-- <button class="btn-explore mx-auto mt-24"></button> -->
+            <div class="text-center mt-24">
+              <van-button type="warning" class="mx-auto">探索更多</van-button>
+            </div>
           </div>
         </div>
       </swiper-slide>
@@ -31,7 +33,7 @@
         <div class="img-box">
           <img src="@/assets/images/t3_16x9.png" alt="" class="">
         </div>
-        <div class="slide-caption container cursor-pointer">
+        <div class="slide-caption cursor-pointer">
           <h2 class="md-text-xl text-md text-white">用创新点缀人生，让科技融入理想。</h2>
           <h3 class="md-text-lg text-sm text-white mt-12">用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。</h3>
           <!-- <button class="btn-explore mx-auto mt-24"></button> -->
@@ -44,15 +46,15 @@
         <div class="img-box">
           <img src="@/assets/images/t4_16x9.png" alt="" class="">
         </div>
-        <div class="slide-caption container cursor-pointer">
+        <div class="slide-caption cursor-pointer">
           <h2 class="md-text-xl text-md text-white">用创新点缀人生，让科技融入理想。</h2>
           <h3 class="md-text-lg text-sm text-white mt-12">用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。用创新点缀人生，让科技融入理想。</h3>
         </div>
       </swiper-slide>
 
       <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-button-prev md-block hidden" slot="button-prev"></div>
-      <div class="swiper-button-next md-block hidden" slot="button-next"></div>
+      <div class="swiper-arrow-prev md-block hidden" slot="button-prev"><img src="@/assets/images/icons/arrows-line-left.png" alt=""></div>
+      <div class="swiper-arrow-next md-block hidden" slot="button-next"><img src="@/assets/images/icons/arrows-line-right.png" alt=""></div>
     </swiper>
   </div>
 </template>
@@ -78,8 +80,8 @@ export default {
           delay: 6000
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-arrow-next',
+          prevEl: '.swiper-arrow-prev',
         }
       }
     }
@@ -110,18 +112,10 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
+
 .swiper-container {
-  height: 36vh;
-  .swiper-button-prev {
-    left: 8%;
-  }
-  .swiper-button-next {
-    right: 8%;
-  }
-  .swiper-button-prev, .swiper-button-next {
-    color: #fff;
-  }
+  height: 32vh;
 }
 
 .slide-caption {
@@ -130,8 +124,9 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 80%;
   height: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,11 +141,58 @@ export default {
 .img-box {
   width: 100%;
   height: 100%;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .mixin_img_cover()
+}
+
+@media (min-width: 768px) {
+  .swiper-container {
+    height: 32vw;
+  }
+
+  .slide-caption {
+    width: 70%;
   }
 }
+
+.swiper-container {
+  .swiper-arrow-prev {
+    left: 6%;
+  }
+  
+  .swiper-arrow-next {
+    right: 6%;
+  }
+  .swiper-arrow-prev:hover {
+    left: 5.5%;
+    opacity: .8;
+  }
+
+  .swiper-arrow-next:hover {
+    right: 5.5%;
+    opacity: .8;
+  }
+
+  .swiper-arrow-prev.swiper-button-disabled {
+    left: 7%;
+  }
+  .swiper-arrow-next.swiper-button-disabled {
+    right: 7%;
+  }
+
+  .swiper-arrow-prev, .swiper-arrow-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    transition: all .3s;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 
 </style>

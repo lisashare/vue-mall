@@ -30,7 +30,7 @@ export default {
 .sidebar-left {
   min-width: 140px;
   .router-link-active {
-    color: red;
+    color: var(--color-red);
   }
 }
 .sidebar-nav {

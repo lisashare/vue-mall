@@ -57,11 +57,54 @@
           </div>
         </form>
         <form class="login-form" v-show="cur === 2">
-          <div class="fm-field">
+          <div class="fm-field fm-field-mobile">
             <div class="form-item">
               <div class="form-group">
                 <label><i class="fa fa-lg fa-mobile"></i></label>
                 <div class="control control-username">
+                  <div class="country-select">
+                    <van-popover v-model="showCountryCode" trigger="click" get-container="#app">
+                      <div class="country-select-list">
+                        <van-index-bar :index-list="computedFullLetter" sticky>
+                          <div v-for="(item, index) in dataList" :key="index">
+                            <van-index-anchor :index="item.title" />
+                            <div class="cell country-select-list-item" v-for="(cell, n) in item.data" :key="n" @click="handleChangeCode(cell)" :class="{'active': selectedItem.code === cell.code && selectedItem.cn === cell.cn}">
+                              <span>{{ cell.cn }}</span>
+                              <span>{{ cell.code }}</span>
+                            </div>
+                          </div>
+                        </van-index-bar>
+                      </div>
+            
+                      <template #reference>
+                        <div class="area-code">{{ selectedCode }}</div>
+                      </template>
+                    </van-popover>
+                  </div>
+                  <!-- <div class="country-select">
+                    <div class="country-code" @click="handleCountryCode">
+                      <div class="area-name"></div>
+                      <div class="area-code">
+                        +86
+                        <div class="select-arrow"></div>
+                      </div>
+                    </div>
+                    <div class="country-select-list" v-show="showCountryCode">
+                      <div class="country-select-list-item">
+                        <span>中国大陆</span>
+                        <span>+86</span>
+                      </div>
+                      <van-index-bar :index-list="indexList" sticky>
+                        <div v-for="(item, index) in dataList" :key="index">
+                          <van-index-anchor :index="item.title" />
+                          <div class="cell country-select-list-item" v-for="(cell, n) in item.data" :key="n">
+                            <span>{{ cell.cn }}</span>
+                            <span>{{ cell.code }}</span>
+                          </div>
+                        </div>
+                      </van-index-bar>
+                    </div>
+                  </div> -->
                   <input
                     type="text"
                     class="fm-text"
@@ -108,20 +151,98 @@
         </form>
       </div>
     </div>
+
+    <van-overlay :show="showVerify" :z-index="99">
+      <div class="verify-wrapper " @click.stop>
+        <div class="verify-content" id="verify"></div>
+      </div>
+    </van-overlay>
   </div>
 </template>
 <script>
 import { mapActions } from 'vuex'
+import { countryCode } from '@/assets/js/country-code'
+import '@/assets/js/graphicVerificationCode/jigsaw.js'
+import '@/assets/js/graphicVerificationCode/jigsaw.css'
+
 export default {
   name: 'Login',
   data () {
     return {
-      cur: 1, // 密码登陆与验证码登陆tab
+      showVerify: false,
+      selectedCode: '+86',
+      selectedItem: {
+        "en": "China",
+        "cn": "中国",
+        "code": "+86"
+      },
+      fullLetter: [],
+      indexList: ["+", "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "W", "X", "Y", "Z"],
+      dataList: [
+        {
+          title: '热门',
+          data: [
+            {
+              "en": "China",
+              "cn": "中国",
+              "code": "+86"
+            },
+            {
+              "en": "Hongkong",
+              "cn": "香港",
+              "code": "+852"
+            },
+            {
+              "en": "Macao",
+              "cn": "澳门",
+              "code": "+853"
+            },
+            {
+              "en": "Taiwan",
+              "cn": "台湾省",
+              "code": "+886"
+            },
+            {
+              "en": "United States of America",
+              "cn": "美国",
+              "code": "+1"
+            },
+            {
+              "en": "Canada",
+              "cn": "加拿大",
+              "code": "+1"
+            },
+            {
+              "en": "United Kiongdom",
+              "cn": "英国",
+              "code": "+44"
+            },
+            {
+              "en": "Australia",
+              "cn": "澳大利亚",
+              "code": "+61"
+            },
+            {
+              "en": "Japan",
+              "cn": "日本",
+              "code": "+81"
+            },
+            {
+              "en": "Korea",
+              "cn": "韩国",
+              "code": "+82"
+            }
+          ]
+        }
+      ],
+      showCountryCode: false,
+      cur: 2, // 密码登陆与验证码登陆tab
       username: '',
       password: '',
       mobile: '',
       code: '',
       timer: null,
+      TIME_COUNT: 10,
       smsCode: '获取验证码',
       disabled: false,
       msg: { // 提示信息
@@ -132,12 +253,67 @@ export default {
       }
     }
   },
+  computed: {
+    computedFullLetter () {
+      let arr = ['+']
+      for (let i = 0, len = countryCode.length;i < len;i++) {
+        let letter = countryCode[i].en.slice(0,1)
+        if (arr.indexOf(letter) === -1) {
+          arr.push(letter)
+        }
+      }
+      this.indexList = arr
+      return arr
+    }
+  },
   mounted () {
+    this.handleList()
+
+    let that = this;
+    jigsaw.init({
+      el: document.getElementById('verify'),
+      width: 310, // 可选, 默认310
+      height: 155, // 可选, 默认155
+      onSuccess: function() {
+        that.verifySuccess()
+        setTimeout(() => {
+          this.reset()
+        }, 1000)
+      },
+      onFail: function () { },
+      onRefresh: function () { }
+    })
   },
   methods: {
+    handleChangeCode (item) {
+      this.selectedItem = item
+      this.selectedCode = item.code
+      this.showCountryCode = false
+    },
+    handleList () {
+      let dataList = []
+      let arr = this.indexList.slice(1)
+      for (let k = 0, length = arr.length; k < length;k++) {
+        let tempDataList = {
+          title: arr[k],
+          data: []
+        }
+        for (let i = 0, len = countryCode.length;i < len;i++) {
+          let letter = countryCode[i].en.slice(0,1)
+          if (arr[k] === letter ) {
+            tempDataList.data.push(countryCode[i])
+          }
+        }
+        dataList.push(tempDataList)
+      }
+      this.dataList.push(...dataList)
+    },
     ...mapActions({
       login: 'user/Login'
     }),
+    // handleCountryCode () {
+    //   this.showCountryCode = !this.showCountryCode
+    // },
     // 验证手机号
     validMobile() {
       const reg = /^\d{11}$/
@@ -185,21 +361,28 @@ export default {
     },
     getCode () {
       if (!this.validMobile()) return false
-      if (this.disabled) return false
-      this.disabled = true
+      // 
+      this.showVerify = true
 
-      const TIME_COUNT = 10
-      this.smsCode = TIME_COUNT + 's'
-      this.timer = setInterval(() => {
-        TIME_COUNT -= 1
-        this.smsCode = TIME_COUNT + 's'
-        if (TIME_COUNT === -1) {
-          clearInterval(this.timer)
-          this.timer = null
-          this.smsCode = '重新发送'
-          this.disabled = false
-        }
-      }, 1000)
+      
+    },
+    verifySuccess () {
+      this.showVerify = false
+      if (this.disabled) return false
+        this.disabled = true
+
+        let time_count = this.TIME_COUNT
+        this.smsCode = time_count + 's'
+        this.timer = setInterval(() => {
+          time_count -= 1
+          this.smsCode = time_count + 's'
+          if (time_count === -1) {
+            clearInterval(this.timer)
+            this.timer = null
+            this.smsCode = '重新发送'
+            this.disabled = false
+          }
+        }, 1000)
     },
     tabSubmitFn (i) {
       if (this.cur === i) return
@@ -230,4 +413,50 @@ export default {
 </script>
 <style lang="less">
 @import './index.less';
+
+.verify-wrapper {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.fm-field-mobile .control-username {
+  .fm-text {
+    padding-left: 100px;
+  }
+}
+.country-select {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 60px;
+  text-align: center;
+  height: 100%;
+  line-height: 42px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.country-select-list {
+  width: 200px;
+  height: 400px;
+  font-size: 14px;
+  overflow-y: scroll;
+  .van-index-bar__sidebar {
+    position: absolute;
+    // right: 16px;
+  }
+  .active {
+    color: red;
+  }
+}
+.country-select-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 26px 0 16px;
+  cursor: pointer;
+}
 </style>

@@ -11,7 +11,7 @@ const state = {
     nickname: '',
     mobile: ''
   },
-  blocked: true
+  blocked: false
 }
 
 const mutations = {

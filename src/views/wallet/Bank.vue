@@ -35,7 +35,7 @@
               <div class="sidebar-nav-item">
                 <h2>支付管理</h2>
                 <ul class="text-sm">
-                  <li><router-link to="/mine/wallet">支付总览</router-link></li>
+                  <li><router-link to="/mine/wallet" exact>支付总览</router-link></li>
                   <li><router-link to="/mine/wallet/bank">银行卡绑定</router-link></li>
                 </ul>
               </div>
@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="sidebar-right flex-1 px-12 md-px-32 lg-px-48">
+          <div class="sidebar-right flex-1 px-0 md-px-32 lg-px-48">
             <div class="user-wallet">
               <div class="flex justify-between">
                 <div>我的钱包</div>

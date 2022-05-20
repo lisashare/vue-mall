@@ -1,8 +1,12 @@
 @import './reset.css';
-@import './_global.less';
 @import './common.less';
 @import './pro.less';
 @import './main.less';
+
+body {
+  background-color: var(--theme-background);
+  color: var(--theme-color);
+}
 
 canvas {
   display: inline-block;
@@ -35,9 +39,24 @@ body, #app {
   }
 }
 
-@media (max-width:768px) {
+@media (min-width:769px) {
   .occupy-banner {
     height: 28vh;
   }
+  .md-i-p-0 {
+    padding: 0!important
+  }
 }
 
+@media (min-width: 1281px) {
+  .occupy-banner {
+    height: 28vh;
+  }
+  .lg-i-p-0 {
+    padding: 0!important
+  }
+  .lg-i-px-15 {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+  }
+}

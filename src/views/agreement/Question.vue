@@ -100,7 +100,7 @@ export default {
 <style lang="less" scoped>
 .collapsible {
   border-radius: 4px;
-  background-color: var(--color-neutral-100);
+  background-color: var(--theme-form-bg);
   transition: all .25s ease-in-out;
   overflow: hidden;
   cursor: pointer;

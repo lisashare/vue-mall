@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :style="{ '--setting-theme': theme }">
     <Header />
     <app-main />
     <Footer />
@@ -25,7 +25,8 @@ export default {
       return this.$router.currentRoute
     },
     ...mapState({
-      device: state => state.app.device
+      device: state => state.app.device,
+      theme: state => state.settings.theme
     })
   },
   mounted () {}

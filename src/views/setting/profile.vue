@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="sidebar-right flex-1 px-12 md-px-32 lg-px-48">
+          <div class="sidebar-right flex-1 px-0 md-px-32 lg-px-48">
             <div class="content">profile</div>
           </div>
         </div>

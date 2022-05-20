@@ -58,8 +58,9 @@ module.exports = {
   //   // 提取 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
   //   extract: true, // 开启后，不能时时监听样式变更
   //   sourceMap: false // 是否在构建样式地图，false将提高构建速度
-  //   loaderOptions: {
-  //     less: {
+    // loaderOptions: {
+    //   less: {
+    //     javascriptEnabled: true
   //       modifyVars: {
   //         hack: `true: @import 'theme.less'`
   //       }
@@ -99,7 +100,7 @@ module.exports = {
       }
     }
   },
-   chainWebpack(config) {
+  chainWebpack(config) {
    /*// set svg-sprite-loader
     config.module
       .rule('svg')
@@ -158,5 +159,19 @@ module.exports = {
           // }
         }
       ) 
+
+    // config => {
+    //   const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    //   types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
+    // }
+
+  
+  }
+  // style-resources-loader vue-cli-plugin-style-resources-loader -D
+  ,pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [resolve('./src/assets/styles/_global.less')] // 引入全局样式变量
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="module-title">
-    <h2 class="text-center">{{ title }}</h2>
+    <h2 class="text-center text-lg">{{ title }}</h2>
   </div>
 </template>
 
@@ -20,5 +20,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.module-title {
+  .rem-tblr(padding, 36, 0);
+}
 </style>

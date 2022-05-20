@@ -2,10 +2,10 @@
  <div class="goods">
    <div class="container py-48 md-py-24">
      <div class="row flex-col md-flex-row">
-       <div class="col col-12 col-md-7">
+       <div class="col col-12 col-md-6">
         <thumbs-gallery></thumbs-gallery>
        </div>
-       <div class="col col-12 col-md-5">
+       <div class="col col-12 col-md-5 offset-md-1">
           <div class="flex py-24 w-full">
             <h1 class="type-lg" style="word-break: break-all;" v-if="goodsDetail.commoditySku">{{ goodsDetail.commoditySku.name }} {{ id }}</h1>
             <div class="flex-none mt-4 ml-10" @click="handleShowPoster"><van-icon name="share-o" size="1.4em" /></div>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div>
-            <ProButton class="inline-block mr-20" @click="handleBuy"><van-icon name="cart-o" class="mr-4" />加入购物车</ProButton>
+            <ProButton class="inline-block mr-20" @click="handleCart"><van-icon name="cart-o" class="mr-4" />加入购物车</ProButton>
             <ProButton class="inline-block"><van-icon name="like-o" class="mr-4" />点赞</ProButton>
           </div>
           <div class="goods-intro text-sm my-24 p-12 md-p-20 text-grey-600">
@@ -210,8 +210,8 @@ export default {
       this.copyMessage = data
       document.getElementById('copyNode').click()
     },
-    handleBuy () {
-      this.$router.push('/buy/1')
+    handleCart () {
+      this.$router.push('/cart')
     }
   },
   created () {

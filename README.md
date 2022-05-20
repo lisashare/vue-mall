@@ -69,6 +69,22 @@ module.exports = {
 import { Button } from 'vant';
 Vue.use(Button);
 ```
+导入所有组件
+
+```js
+import Vue from 'vue';
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
+```
+[vant](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/advanced-usage#zhuo-mian-duan-gua-pei) 桌面端适配
+
+# 安装模块
+npm i @vant/touch-emulator -S
+
+引入模块后自动生效
+import '@vant/touch-emulator';
 
 * 打包环境配置
 
@@ -110,13 +126,17 @@ moment
 
 ### 开发中的问题记录
 
-* 在vue文件中使用<van-image>引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
+#### vant tabbar 
+
+mine 路由的子路由，点击tab不能直接跳转到/mine
+
+#### 在vue文件中使用<van-image>引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
 :src="require(url)"
 
 ```html
 <van-image :src="require('@/common/imgs/more.png')" />
 ```
-* 配置 index.html 标题
+#### 配置 index.html 标题
 
 ```js
 <title><%= htmlWebpackPlugin.options.title %></title>
@@ -172,6 +192,23 @@ module.exports = {
 
 ```
 
+#### 全局变量 less 文件引入问题
+
+```
+pnpm install style-resources-loader vue-cli-plugin-style-resources-loader -D
+
+vue.config.js
+module.exports = {
+  // ...
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [resolve('./src/assets/styles/_base.less')] // 引入全局样式变量
+    }
+  }
+}
+```
+
 #### 海报参考文档
 
 https://ethan.pub/?p=846
@@ -182,25 +219,55 @@ https://www.w3cschool.cn/article/37137920.html
 距离开售 19:25:00
 https://www.jianshu.com/p/280a709e7121
 
+#### 登录手机号前缀
+https://www.jianshu.com/p/a6497ed645fe
+
 #### others
 
 一个项目有两个请求域名的话，可以将request.js多配置一套
 
+http://www.geetest.com/  极验验证
+
+位置信息，图片切换
+https://github.com/yeild/jigsaw
 
 
-todo: 
+#### canvas 和 svg 的区别
 
-消息
+svg 是矢量图
+    基于xml描述的2d图形语言
+    用js进行处理
+    每个图形都是对象，属性发生变化，浏览器可以自动加载
 
-权限页面预览：账号授权？
+特点：
+  不依赖于分辨率
+  支持事件处理
+  适合带有大型渲染区域的应用程序，比如 谷歌地图
+  不适合游戏应用
 
-登录手机号前缀
+canvas 是位图
+  基于js绘制2d图形
+  逐像素渲染的，适合游戏
+  在canvas中，图形是被绘制完成，如果位置发生变化，整个场景都会发生变化
 
-短信验证码防刷验证
+特点：
+  依赖于分辨率
+  不支持事件处理
+  文本渲染能力比较强
+  可以存储成jpg，png的格式
 
-分页
+https://github.com/alvarotrigo/fullPage.js
 
-搜索
+分页，移动端下拉刷新和桌面端分页不一定能共同响应一个分页，可能要分开写。
 
-版本？
+页面预览：权限账号授权？单独一个页面？
+
+
+媒体查询其他引入方式
+
+```html
+<style media="(min-width: 768px) and (max-width: 992px)"></style>
+<link href="" rel="stylesheet" media="(min-width: 768px)">
+这里的小括号必须带
+```
 

@@ -1,20 +1,20 @@
 <template>
   <div class="page__footer">
     <div class="mobile-footer" v-if="device === 'mobile'">
-      <van-tabbar v-model="active" active-color="#ee0a24" inactive-color="#000" :placeholder="true" @change="onChange">
-        <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-        <van-tabbar-item>
+      <van-tabbar v-model="active" :active-color="settings.theme" inactive-color="#000" :placeholder="true">
+        <van-tabbar-item icon="home-o" @click="onClick('/')">首页</van-tabbar-item>
+        <van-tabbar-item @click="onClick('/market')">
           <span>自定义</span>
           <template #icon="props">
             <img :src="props.active ? icon.active : icon.inactive" />
           </template>
         </van-tabbar-item>
-        <van-tabbar-item icon="award-o">标签</van-tabbar-item>
-        <van-tabbar-item icon="diamond-o">标签</van-tabbar-item>
-        <van-tabbar-item icon="contact">我的</van-tabbar-item>
+        <van-tabbar-item icon="award-o" @click="onClick('/artist')">标签</van-tabbar-item>
+        <van-tabbar-item icon="diamond-o" @click="onClick('/hotspot')">标签</van-tabbar-item>
+        <van-tabbar-item icon="contact" @click="onClick('/mine')">我的</van-tabbar-item>
       </van-tabbar>
     </div>
-    <footer v-else class="desktop bg-f7 text-sm py-48">
+    <footer v-else class="desktop text-sm py-48">
       <div class="container">
         <div class="row text-center">
           <div class="col">
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -87,42 +87,37 @@ export default {
     }
   },
   computed: {
+    ...mapState(["settings"]),
     ...mapGetters(['device'])
   },
   mounted () {
-    let path = this.$route.path
-    if (path.indexOf('/market') !== -1) {
-      this.active = 1
-    } else if (path.indexOf('/artist') !== -1) {
-      this.active = 2
-    } else if (path.indexOf('/hotspot') !== -1) {
-      this.active = 3
-    } else if (path.indexOf('/mine') !== -1) {
-      this.active = 4
-    } else if (/\/(\?.)*$/.test(path)) {
-      this.active = 0
-    } else {
-      this.active = -1
+    this.handleActive()
+  },
+  watch: {
+    $route () {
+      this.handleActive()
     }
   },
   methods: {
-    onChange(index) {
-      switch (index) {
-        case 0: 
-          this.$router.push('/')
-          break;
-        case 1:
-          this.$router.push('/market')
-          break;
-        case 2:
-          this.$router.push('/artist')
-          break;
-        case 3:
-          this.$router.push('/hotspot')
-          break;
-        case 4:
-          this.$router.push('/mine')
-          break;
+    handleActive () {
+      let path = this.$route.path
+      if (path.indexOf('/market') !== -1) {
+        this.active = 1
+      } else if (path.indexOf('/artist') !== -1) {
+        this.active = 2
+      } else if (path.indexOf('/hotspot') !== -1) {
+        this.active = 3
+      } else if (path.indexOf('/mine') !== -1) {
+        this.active = 4
+      } else if (/\/(\?.)*$/.test(path)) {
+        this.active = 0
+      } else {
+        this.active = -1
+      }
+    },
+    onClick (path) {
+      if (this.$route.path !== path) {
+        this.$router.push({ path })
       }
     }
   }
@@ -131,10 +126,14 @@ export default {
 
 <style lang="less">
 .page__footer {
+  background-color: var(--theme-bg-footer);
+  footer {
+    border-top: var(--theme-footer-border) 1px solid;
+  }
   .desktop {
     a:hover {
       text-decoration: underline;
-      color: var(--color-primary-600);
+      color: var(--setting-theme);
     }
   }
 }
