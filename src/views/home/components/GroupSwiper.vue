@@ -2,7 +2,7 @@
   <div class="group-swiper swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
-        <router-link :to="'/goods?id='+slide.id" class="tile-img rounded-lg overflow-hidden">
+        <router-link :to="'/goods/'+slide.id" class="tile-img rounded-lg overflow-hidden">
           <img :src="slide.cover" alt="">
         </router-link>
       </div>

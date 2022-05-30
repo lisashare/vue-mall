@@ -84,7 +84,7 @@ module.exports = {
 
     // 关闭 webpack 的性能提示
     // performance: {
-    //   hints:false
+    //   hints:false // 提示
     // },
     // 或者
     // 警告 webpack 的性能提示

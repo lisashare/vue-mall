@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 import './permission'
 
+import '@/utils/rem' // rem
+
 // 引入全部样式
 import anime from 'animejs/lib/anime.es.js'
 import 'vant/lib/index.css'
@@ -24,7 +26,6 @@ Vue.use(ColorPicker).use(input).use(pagination)
 
 Vue.use(Vant);
 Vue.prototype.$anime = anime
-
 
 
 Vue.config.productionTip = false
