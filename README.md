@@ -130,7 +130,7 @@ moment
 
 mine 路由的子路由，点击tab不能直接跳转到/mine
 
-#### 在vue文件中使用<van-image>引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
+#### 在vue文件中使用```<van-image>```引用本地图片时，不能直接使用地址，应该在地址前面用require包上：
 :src="require(url)"
 
 ```html
